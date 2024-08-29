@@ -1,35 +1,58 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_project/widgets/edit_settings_screen.dart';
-import 'package:navigation_project/widgets/home_screen.dart';
-import 'package:navigation_project/widgets/initial_screen.dart';
-import 'package:navigation_project/widgets/login_screen.dart';
-import 'package:navigation_project/widgets/register_screen.dart';
-import 'package:navigation_project/widgets/settings_screen.dart';
-import 'package:navigation_project/widgets/welcome_screen.dart';
+import 'package:go_router/go_router.dart';
+import 'package:navigation_project/widgets/go_router_screens/edit_settings_screen.dart';
+import 'package:navigation_project/widgets/go_router_screens/home_screen.dart';
+import 'package:navigation_project/widgets/go_router_screens/initial_screen.dart';
+import 'package:navigation_project/widgets/go_router_screens/login_screen.dart';
+import 'package:navigation_project/widgets/go_router_screens/register_screen.dart';
+import 'package:navigation_project/widgets/go_router_screens/welcome_screen.dart';
 
 import 'constants.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final GoRouter _router = GoRouter(
+    initialLocation: screenRoutes[Screen.initial],
+    routes: [
+      GoRoute(
+        path: screenRoutes[Screen.initial]!,
+        builder: (context, state) => const InitialScreen(),
+      ),
+      GoRoute(
+        path: '${screenRoutes[Screen.initial]}${screenRoutes[Screen.welcome]}', 
+        builder: (context, state) => const WelcomeScreen(),
+      ),
+      GoRoute(
+        path: '${screenRoutes[Screen.initial]}${screenRoutes[Screen.login]}',  
+        builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: '${screenRoutes[Screen.initial]}${screenRoutes[Screen.register]}',
+        builder: (context, state) => const RegisterScreen(),
+      ),
+      GoRoute(
+        path: '${screenRoutes[Screen.initial]}${screenRoutes[Screen.home]}',
+        builder: (context, state) => const HomeScreen(),
+        routes: [
+          GoRoute(
+            path: screenRoutes[Screen.editSettings]!,
+            builder: (context, state) => const EditSettingsScreen(),
+          ),
+        ],
+      ),
+    ],
+  );
+
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Navigation Flow',
-      initialRoute: screenRoutes[Screen.initial],
-      routes: {
-        screenRoutes[Screen.initial]!: (context) => const InitialScreen(),
-        screenRoutes[Screen.welcome]!: (context) => const WelcomeScreen(),
-        screenRoutes[Screen.login]!: (context) => const LoginScreen(),
-        screenRoutes[Screen.register]!: (context) => const RegisterScreen(),
-        screenRoutes[Screen.home]!: (context) => const HomeScreen(),
-        screenRoutes[Screen.settings]!: (context) => const SettingsScreen(),
-        screenRoutes[Screen.editSettings]!: (context) => const EditSettingsScreen(),
-      },
+    return MaterialApp.router(
+      title: 'Flutter GoRouter Navigation Demo',
+      routerConfig: _router,
     );
   }
 }

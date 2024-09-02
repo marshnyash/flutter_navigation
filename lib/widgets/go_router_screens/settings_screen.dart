@@ -10,8 +10,7 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: ElevatedButton(
-          onPressed: () => context.go(
-              '${screenRoutes[Screen.initial]}${screenRoutes[Screen.home]}${screenRoutes[Screen.initial]}${screenRoutes[Screen.editSettings]}'),
+          onPressed: () => context.go('/${screenRoutes[Screen.editSettings]}'),
           child: const Text('Edit Settings'),
         ),
       ),

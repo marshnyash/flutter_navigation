@@ -11,7 +11,7 @@ class EditSettingsScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Edit Settings')),
       body: Center(
         child: ElevatedButton(
-          onPressed: () => context.go('${screenRoutes[Screen.initial]}${screenRoutes[Screen.home]}'),
+          onPressed: () => context.go('/${screenRoutes[Screen.home]}'),
           child: const Text('Save Settings'),
         ),
       ),

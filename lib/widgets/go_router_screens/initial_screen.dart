@@ -11,9 +11,9 @@ class InitialScreen extends StatelessWidget {
       bool isLoggedIn = false; // Change this value to simulate logged in state
 
       if (isLoggedIn) {
-        context.go('${screenRoutes[Screen.initial]}${screenRoutes[Screen.home]}');
+        context.go('/${screenRoutes[Screen.home]}');
       } else {
-        context.go('${screenRoutes[Screen.initial]}${screenRoutes[Screen.welcome]}');
+        context.go('/${screenRoutes[Screen.welcome]}');
       }
     });
 

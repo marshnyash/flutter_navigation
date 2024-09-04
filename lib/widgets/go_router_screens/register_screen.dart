@@ -11,7 +11,7 @@ class RegisterScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Register')),
       body: Center(
         child: ElevatedButton(
-          onPressed: () => context.go('${screenRoutes[Screen.initial]}${screenRoutes[Screen.home]}'),
+          onPressed: () => context.go('/${screenRoutes[Screen.home]}'),
           child: const Text('Register'),
         ),
       ),

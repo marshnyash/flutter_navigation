@@ -11,7 +11,7 @@ class LoginScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Log In')),
       body: Center(
         child: ElevatedButton(
-          onPressed: () => context.go( '${screenRoutes[Screen.initial]}${screenRoutes[Screen.home]}'),
+          onPressed: () => context.go( '/${screenRoutes[Screen.home]}'),
           child: const Text('Log In'),
         ),
       ),

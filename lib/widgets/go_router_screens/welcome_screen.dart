@@ -15,12 +15,12 @@ class WelcomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => context.go('${screenRoutes[Screen.initial]}${screenRoutes[Screen.login]}'),
+              onPressed: () => context.go('/${screenRoutes[Screen.login]}'),
               child: const Text('Log In'),
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () => context.go('${screenRoutes[Screen.initial]}${screenRoutes[Screen.register]}'),
+              onPressed: () => context.go('/${screenRoutes[Screen.register]}'),
               child: const Text('Register'),
             ),
           ],
